@@ -1,15 +1,14 @@
 # Algorithm to fit the constelations to the mcdonalds locations
-# Ethan Mertz 2018
+# Marco Kaisth, Ethan Mertz 2019
 
-import sqlite
 import math
 import csv
 import constellation
 
 
-def fit_points(point1, point2, constellation):
+def try_points(points):
+	#con_centroid=constellation.centroid(constellation)
+	points_centroid=constellation.centroid(points)
+	return points_centroid
 
-
-
-
-
+try_points([(2,2),(2,3)])
