@@ -1,5 +1,5 @@
 class Star:
 
-    def __init__(self, proper_name, coords):
-        coords = coordinates
-        proper_name = name
+    def __init__(self, name, coordinates):
+        self.coordinates = coordinates
+        self.name = name
