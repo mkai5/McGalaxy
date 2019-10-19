@@ -4,6 +4,7 @@ class Constellation:
 
     def __init__(self, stars):
         self.stars = stars
+        self.size = len(stars)
 
     def get_centroid(self):
         x=0

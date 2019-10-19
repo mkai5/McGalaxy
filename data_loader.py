@@ -1,20 +1,23 @@
 import pandas as pd
-import numpy as np
 import star
 import constellation
 
-# Import all McDonalds data
-McDs_data = pd.read_csv("Mcdonalds_USA_CAN.csv", encoding="latin-1",
-	names = ["Longitude","Latitude","City","Information"])
+class Data_Loader:
 
-#Import coordinate positions of star data
-star_data = pd.read_csv("hygdata_v3.csv", usecols=["Proper name","x","y","z"])
-#Drop all non-named stars
-star_data = star_data.dropna()
-#Create star instances from star data
-star_data=star_data.apply(
-	lambda i: star.Star(i["Proper name"], (i["x"], i["y"])), axis=1)
-star_data = star_data.tolist()
+	def import_McDs():
+		# Import all McDonalds data
+		return pd.read_csv("Mcdonalds_USA_CAN.csv", encoding="latin-1",
+			names = ["Longitude","Latitude","City","Information"])
 
-con = constellation.Constellation(star_data)
-print (con.get_centroid())
+	def import_stars():
+		#Import coordinate positions of star data
+		star_data = pd.read_csv("hygdata_v3.csv", usecols=["Proper name","x","y","z"])
+		#Drop all non-named stars
+		star_data = star_data.dropna()
+		#Create star instances from star data
+		star_data["star instance"]=star_data.apply(
+			lambda i: star.Star(i["Proper name"], (i["x"], i["y"])), axis=1)
+		return star_data
+
+
+
