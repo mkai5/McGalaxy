@@ -6,8 +6,9 @@ class Fitter:
 	
 	def try_fit(con, mcds):
 		#Check lengths of lists
-		if (len(con.size)!=len(mcds)):
+		if (con.size!=mcds.size):
 			raise ValueError("Constellation and McDonalds of different length")
+
 
 
 
