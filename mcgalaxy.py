@@ -17,7 +17,7 @@ class McGalaxy:
 				print (fitter.Fitter.import_stars()["Proper name"].to_string(index=False))
 				print ("Any of these stars can be named by proper name, in any sequence")
 				print ("McGalay also supports the following constellations:")
-				print (constellations)
+				print (con_list)
 				print ("Make sure to only use whitespace to delimit your inputs!")
 				print ("""Additionally, since the number of McDonald's locations is so large
 as to be prohibitive for searching, flag your list with -a to limit your search to Alaska!""")
