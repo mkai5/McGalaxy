@@ -6,10 +6,15 @@
 
 ## Running McGalaxy
 
-Simply run mcgalaxy.py using Python3 through (depending on your default version of Python):
+Simply run mcgalaxy.py using Python3 through (depending on your default version of Python) either:
 
 ```
 py mcgalaxy.py
+```
+
+or
+
+```
 python3 mcgalaxy.py
 ```
 
@@ -19,10 +24,22 @@ Then, enter a set of stars or one of the named constellation options. Currently,
 "h"
 ```
 
+or
+
+```
+"help"
+```
+
 To exit the program, simply input:
 
 ```
 "x"
+```
+
+or
+
+```
+"exit"
 ```
 
 Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. As such, by default, McGalaxy only looks at McDonald's in Alaska. To broaden your search, to all McDonald's in North America simply add the flag
