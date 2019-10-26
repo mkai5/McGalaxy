@@ -2,7 +2,7 @@
 
 ##### V1.0 10.26.19
 
-**McGalaxy**, by Marco Harnam Kaisth, allows a user to enter a constellation, and outputs the arrangement of McDonald's in North America that most resembles that constellation in relative distance and orientation.
+**McGalaxy**, by Marco Harnam Kaisth, allows a user to enter a constellation, and outputs the arrangement of McDonald's in the USA and Canada that most resembles that constellation in relative distance and orientation.
 
 ## Running McGalaxy
 
@@ -42,13 +42,13 @@ or
 "exit"
 ```
 
-Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. As such, by default, McGalaxy only looks at McDonald's in Alaska. To broaden your search, to all McDonald's in North America simply add the flag
+Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. As such, by default, McGalaxy only looks at McDonald's in Alaska. To broaden your search to all McDonald's in the USA and Canada simply add the flag
 
 ```
 -all
 ```
 
-anywhere within your input string to search. To underscore the immensity of this computation, with "-all" flag, the program needs to evaluate $\approx 6 \times10^{25}$ possible combinations of McDonald's locations to find which best suits the big dipper!
+anywhere within your input string. To underscore the immensity of this computation, the program needs to evaluate $\approx 6 \times10^{25}$ possible combinations of McDonald's locations to find which best suits the big dipper!
 
 ## Examples
 
@@ -120,7 +120,7 @@ Big_Dipper -all
 
 ## Acknowledgements
 
-The idea for McGalaxy was concieved of by [Ethan Mertz](https://github.com/ethanmertz/).
+The idea for McGalaxy (and the name!) was concieved of by [Ethan Mertz](https://github.com/ethanmertz/).
 Star data is from the [HYG Database](http://www.astronexus.com/hyg).
 McDonald's data is from [POI Factory](http://www.poi-factory.com/node/11154).
 
