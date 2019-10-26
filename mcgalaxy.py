@@ -7,7 +7,7 @@ import fitter
 class McGalaxy:
 
 	def handle_input(str_in):
-		constellations = ["Big_Dipper", "Aquila"]
+		con_list = constellation.Constellation.constellations
 		limited = False
 		if (str_in=="x"):
 			return False
@@ -33,8 +33,8 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 				if (s=="-a"):
 					limited = True
 					str_list.remove(s)
-				elif (s in constellations):
-					con_data = constellation_lookup(s,star_data)
+				elif (s in con_list):
+					con_data = constellation.Constellation.constellation_lookup(s,star_data)
 					star_list = con_data['Obj'].tolist()
 					feeder_con = constellation.Constellation(star_list)
 					if (limited):
@@ -60,23 +60,6 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 			print("The McDonalds that most resemble {} are:".format(str_list))
 			fitter.Fitter.try_fit(feeder_con,feeder_mcds).print_info()
 			return True
-
-			def constellation_lookup(s,star_data):
-				if (s=="Big_Dipper"):
-					con_data= star_data.loc[(star_data["Proper name"] == "Alioth")
-					| (star_data["Proper name"] == "Dubhe")
-					| (star_data["Proper name"] == "Merak")
-					| (star_data["Proper name"] == "Alkaid")
-					| (star_data["Proper name"] == "Phad")
-					| (star_data["Proper name"] == "Megrez")
-					| (star_data["Proper name"] == "Mizar")]
-				elif (s=="Aquila"):
-					con_data= star_data.loc[(star_data["Proper name"] == "Altair")
-					| (star_data["Proper name"] == "Alshain")
-					| (star_data["Proper name"] == "Tarazed")]
-				else:
-					raise ValueError("Constellation not included in lookup function")
-				return con_data
 
 
 
