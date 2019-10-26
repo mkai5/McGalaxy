@@ -78,5 +78,5 @@ class Fitter:
 	star_list = con_data['Obj'].tolist()
 	#print (star_list)
 	temp_con = constellation.Constellation(star_list)
-	temp_mcds = mcds_con.McDs_con(import_McDs().tolist())
+	temp_mcds = mcds_con.McDs_con(import_McDs().tolist()[:60])
 	try_fit(temp_con,temp_mcds).print_info()
