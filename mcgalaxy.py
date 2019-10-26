@@ -12,8 +12,8 @@ class McGalaxy:
 	def handle_input(str_in):
 		#pull list of valid constellations from constellation.py
 		con_list = constellation.Constellation.constellations
-		#by default, use whole list of McDonald's
-		limited = False
+		#by default, use only Alaska McDonald's
+		limited = True
 		#check for exit condition
 		if ((str_in=="x") or (str_in=="exit")):
 			return False
@@ -28,7 +28,9 @@ class McGalaxy:
 					print (con_list)
 					print ("Make sure to only use whitespace to delimit your inputs!")
 					print ("""Additionally, since the number of McDonald's locations is so large
-as to be prohibitive for searching, flag your list with -a to limit your search to Alaska!""")
+as to be prohibitive for searching, McGalaxy automatically searches only within Alaska. To
+expand your search to all McDonald's in the US and Canada, add the flag "-all" anywhere
+within your input, but be warned! It'll take a long time on powerful hardware!""")
 			return True
 		#otherwise
 		else:
@@ -45,15 +47,15 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 
 			#cycle through inputs
 			for s in str_list:
-				#limit to Alaska is flag present
-				if (s=="-a"):
-					limited = True
+				#unlimit is flag present
+				if (s=="-all"):
+					limited = False
 				#if s in a known constellation, treat automatically use
 				#	constellation data
 				elif (s in con_list):
-					#limit to Alaska if flag present
-					if ("-a" in str_list):
-						limited=True
+					#unlimit if flag present
+					if ("-all" in str_list):
+						limited=False
 					#look up constellation data, construct constellation
 					con_data = constellation.Constellation.constellation_lookup(s,star_data)
 					star_list = con_data['Obj'].tolist()
@@ -61,10 +63,10 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 					#construct McDonald's list
 					if (limited):
 						feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist()[:31])
-						#remove "-a" flag to make printing prettier
-						str_list.remove("-a")
 					else:
 						feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist())
+						#remove "-all" flag to make printing prettier
+						str_list.remove("-all")
 					#print information
 					print("The McDonalds that most resemble {} are:".format(s))
 					#find best fit
@@ -96,9 +98,9 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 			#build McDonald's
 			if (limited):
 				feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist()[:31])
-				str_list.remove("-a")
 			else:
 				feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist())
+				str_list.remove("-all")
 			print("The McDonalds that most resemble {} are:".format(str_list))
 			#check for best fit
 			fitter.Fitter.find_best_fit(feeder_con,feeder_mcds).print_info()
@@ -111,8 +113,12 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 	cycle_loop = True
 	#Welcome message
 	print ("""Welcome to McGalaxy! This program allows you to input any 
-constellation or set of stars, and outputs the set of McDonalds in North 
-America that most resembles it.""")
+constellation or set of stars, and outputs the set of McDonalds in the US 
+and Canada that most resembles it in relative distance and orientation.""")
+	print ("""By default, this program limits your search to only Alaska.
+However, use the "-all" flag anywhere in your input to search the whole
+data set! Be warned, this is extremely long and intensive, and not
+feasible for most devices.""")
 	print ('''Input "h" to see what constellations and stars are availible,
 or input a constellation or set of stars by proper name below! Exit
 with "x"''')

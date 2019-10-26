@@ -25,14 +25,13 @@ To exit the program, simply input:
 "x"
 ```
 
-Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. To limit your search, simply add the flag
+Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. As such, by default, McGalaxy only looks at McDonald's in Alaska. To broaden your search, to all McDonald's in North America simply add the flag
 
 ```
--a
+-all
 ```
 
-anywhere within your input string to search only McDonald's within Alaska (of which there are 31). 
-To underscore the immensity of this computation, without the "-a" flag, the program needs to evaluate $\approx 6 \times10^{25}$ possible combinations of McDonald's locations!
+anywhere within your input string to search. To underscore the immensity of this computation, with "-all" flag, the program needs to evaluate $\approx 6 \times10^{25}$ possible combinations of McDonald's locations to find which best suits the big dipper!
 
 ## Acknowledgements
 
