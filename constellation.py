@@ -19,6 +19,12 @@ class Constellation:
         y = y / size
         return (x,y)
 
+    def list_names(self):
+        names = []
+        for i in self.stars:
+            names.append(i.name)
+        return names
+
     def constellation_lookup(s,star_data):
         if (s=="Big_Dipper"):
             con_data= star_data.loc[(star_data["Proper name"] == "Alioth")

@@ -18,7 +18,7 @@ class McGalaxy:
 		if ((str_in=="x") or (str_in=="exit")):
 			return False
 		#check for help condition
-		elif (str_in=="h"):
+		elif ((str_in=="h") or (str_in=="help")):
 			#print help message
 			with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 					print("McGalaxy supports the following stars:")
@@ -68,10 +68,10 @@ within your input, but be warned! It'll take a long time on powerful hardware!""
 						#remove "-all" flag to make printing prettier
 						str_list.remove("-all")
 					#print information
-					print("The McDonalds that most resemble {} are:".format(s))
+					print("The McDonalds that most resemble {} are:".format(feeder_con.list_names()))
 					#find best fit
 					fitter.Fitter.find_best_fit(feeder_con,feeder_mcds).print_info()
-					print('''Input "x" to exit or continue exploring the McGalaxy!''')
+					print('''Input "x" or "exit" to exit or continue exploring the McGalaxy!''')
 					return True
 				#otherwise, if star is input
 				else:
@@ -101,10 +101,10 @@ within your input, but be warned! It'll take a long time on powerful hardware!""
 			else:
 				feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist())
 				str_list.remove("-all")
-			print("The McDonalds that most resemble {} are:".format(str_list))
+			print("The McDonalds that most resemble {} are:".format(feeder_con.list_names()))
 			#check for best fit
 			fitter.Fitter.find_best_fit(feeder_con,feeder_mcds).print_info()
-			print('''Input "x" to exit or continue exploring the McGalaxy!''')
+			print('''Input "x" or "exit" to exit or continue exploring the McGalaxy!''')
 			return True
 
 		
@@ -119,9 +119,8 @@ and Canada that most resembles it in relative distance and orientation.""")
 However, use the "-all" flag anywhere in your input to search the whole
 data set! Be warned, this is extremely long and intensive, and not
 feasible for most devices.""")
-	print ('''Input "h" to see what constellations and stars are availible,
-or input a constellation or set of stars by proper name below! Exit
-with "x"''')
+	print ('''Input "h" or "help" to see what constellations and stars are availible,
+or input a constellation or set of stars by proper name below! Exit with "x" or "exit"''')
 	#Cycle until user exits
 	while (cycle_loop):
 		str_in = input()
