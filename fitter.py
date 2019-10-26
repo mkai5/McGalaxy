@@ -32,7 +32,6 @@ class Fitter:
 	def try_fit(con, mcds):
 		#calculate constellation centroid
 		con_cen = con.get_centroid()
-		#print(con_cen)
 		con_dist_cen = []
 		for i in con.stars:
 			con_dist_cen.append(i.dist(i.coordinates,con_cen))
@@ -42,41 +41,33 @@ class Fitter:
 
 		#construct list of things to try
 		to_try = list(itertools.combinations(mcds.mcds, con.size))
-		#print (to_try)
+
+		#set base conditions to replace
 		best_fit = to_try[0]
 		best_total = 100
-		print ("Len to_try")
-		print (len(to_try))
+
+		#iterate through each McDs_con
 		for i in to_try:
 			mcds_con_i = mcds_con.McDs_con(i)
+			#get centroid
 			mcds_cen = mcds_con_i.get_centroid_mcds()
-			temp_list = []
+			#initialize list
+			dist_list = []
+			#create list of distances from centroid
 			for j in mcds_con_i.mcds:
-				temp_list.append(j.dist(j.coordinates, mcds_cen))
-			temp_list.sort()
+				dist_list.append(j.dist(j.coordinates, mcds_cen))
+			#sort list
+			dist_list.sort()
+			#normalize list
 			for j in range(con.size):
-				temp_list[j] = temp_list[j]/temp_list[con.size-1]
+				dist_list[j] = dist_list[j]/dist_list[con.size-1]
+			#check total value of list
 			total = 0
 			for j in range (con.size):
-				total = total + (abs(con_dist_cen[j]-temp_list[j]))
+				total = total + (abs(con_dist_cen[j]-dist_list[j]))
+			#if total is better than best so far, replace
 			if (total < best_total):
 				best_total = total
 				best_fit = mcds_con_i
-			#print (i)
+		#return best fitting McDs_con
 		return best_fit
-
-
-	star_data = import_stars()
-	con_data= star_data.loc[(star_data["Proper name"] == "Alioth")
-		| (star_data["Proper name"] == "Dubhe")
-		| (star_data["Proper name"] == "Merak")
-		| (star_data["Proper name"] == "Alkaid")
-		| (star_data["Proper name"] == "Phad")
-		| (star_data["Proper name"] == "Megrez")
-		| (star_data["Proper name"] == "Mizar")]
-	#print (con_data)
-	star_list = con_data['Obj'].tolist()
-	#print (star_list)
-	temp_con = constellation.Constellation(star_list)
-	temp_mcds = mcds_con.McDs_con(import_McDs().tolist()[:60])
-	try_fit(temp_con,temp_mcds).print_info()
