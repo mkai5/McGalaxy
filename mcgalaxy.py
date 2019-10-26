@@ -34,6 +34,8 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 					limited = True
 					str_list.remove(s)
 				elif (s in con_list):
+					if ("-a" in str_list):
+						limited=True
 					con_data = constellation.Constellation.constellation_lookup(s,star_data)
 					star_list = con_data['Obj'].tolist()
 					feeder_con = constellation.Constellation(star_list)
@@ -43,6 +45,7 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 						feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist())
 					print("The McDonalds that most resemble {} are:".format(s))
 					fitter.Fitter.try_fit(feeder_con,feeder_mcds).print_info()
+					print('''Input "x" to exit or continue exploring the McGalaxy!''')
 					return True
 				else:
 					con_data = con_data.append(star_data.loc[
@@ -59,6 +62,7 @@ as to be prohibitive for searching, flag your list with -a to limit your search 
 				feeder_mcds = mcds_con.McDs_con(fitter.Fitter.import_McDs().tolist())
 			print("The McDonalds that most resemble {} are:".format(str_list))
 			fitter.Fitter.try_fit(feeder_con,feeder_mcds).print_info()
+			print('''Input "x" to exit or continue exploring the McGalaxy!''')
 			return True
 
 
