@@ -1,4 +1,5 @@
 import math
+
 class McD:
 
 	def __init__(self, name, coordinates, info):

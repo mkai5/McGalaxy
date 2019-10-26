@@ -9,33 +9,40 @@ import mcds_con
 
 class Fitter:
 
+	#Imports McDs data, returns a dataframe including instances
 	def import_McDs():
-		# Import all McDonalds data
+		# Import all McDonald's data from csv
 		mcds_data = pd.read_csv("Mcdonalds_USA_CAN.csv", encoding="latin-1",
 			names = ["Longitude","Latitude","City","Information"])
+		#Create McD instances from McDonald's
 		mcds_data = mcds_data.apply(
 			lambda i: mcd.McD(i["City"],(i["Latitude"],i["Longitude"]),
 				i["Information"]), axis=1)
 		return mcds_data
 
-
+	#Imports star data, returns a dataframe including instances
 	def import_stars():
-		#Import coordinate positions of star data
+		#import coordinate positions of star data from csv
 		star_data = pd.read_csv("hygdata_v3.csv", usecols=["Proper name","x","y"])
-		#Drop all non-named stars
+		#drop all non-named stars
 		star_data = star_data.dropna(subset=["Proper name"])
-		#Create star instances from star data
+		#create star instances from star data
 		star_data["Obj"]=star_data.apply(
 			lambda i: star.Star(i["Proper name"], (i["x"], i["y"])), axis=1)
 		return star_data
 	
-	def try_fit(con, mcds):
+	#Returns best fitting McDs_con given a constellation and an input set of McDs
+	def find_best_fit(con, mcds):
 		#calculate constellation centroid
 		con_cen = con.get_centroid()
+		#initialize list of distances from centroid
 		con_dist_cen = []
+		#populate list
 		for i in con.stars:
 			con_dist_cen.append(i.dist(i.coordinates,con_cen))
+		#sort list
 		con_dist_cen.sort()
+		#normalize list
 		for i in range(con.size):
 			con_dist_cen[i] = con_dist_cen[i]/con_dist_cen[con.size-1]
 

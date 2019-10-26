@@ -31,7 +31,8 @@ Because of the number of McDonald's on the list (15,592), and because the progra
 -a
 ```
 
-anywhere within your input string to search only McDonald's within Alaska (of which there are 31).
+anywhere within your input string to search only McDonald's within Alaska (of which there are 31). 
+To underscore the immensity of this computation, without the "-a" flag, the program needs to evaluate $\approx 6 \times10^{25}$ possible combinations of McDonald's locations!
 
 ## Acknowledgements
 
@@ -39,10 +40,6 @@ The idea for McGalaxy was concieved of by [Ethan Mertz](https://github.com/ethan
 Star data is from the [HYG Database](http://www.astronexus.com/hyg).
 McDonald's data is from [POI Factory](http://www.poi-factory.com/node/11154).
 
-McDonald's data is from POI Factory.
-
-McDonald's data is from [POI Factory](http://www.poi-factory.com/node/11154).
-
-##### Contact Information
+## Contact
 
 Reach out with any questions to [mhk@mhk.dev](mailto:mhk@mhk.dev)
