@@ -120,7 +120,7 @@ Big_Dipper -all
 
 ## Acknowledgements
 
-The idea for McGalaxy (and the name!) was concieved of by [Ethan Mertz](https://github.com/ethanmertz/).
+The idea for McGalaxy (and the name!) was conceieved of by [Ethan Mertz](https://github.com/ethanmertz/).
 Star data is from the [HYG Database](http://www.astronexus.com/hyg).
 McDonald's data is from [POI Factory](http://www.poi-factory.com/node/11154).
 
