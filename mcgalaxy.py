@@ -14,8 +14,11 @@ class McGalaxy:
 		con_list = constellation.Constellation.constellations
 		#by default, use only Alaska McDonald's
 		limited = True
+		#loop if given empty input
+		if (str_in.isspace() or (str_in=="")):
+			return True
 		#check for exit condition
-		if ((str_in=="x") or (str_in=="exit")):
+		elif ((str_in=="x") or (str_in=="exit")):
 			return False
 		#check for help condition
 		elif ((str_in=="h") or (str_in=="help")):
