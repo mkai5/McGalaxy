@@ -21,25 +21,25 @@ python3 mcgalaxy.py
 Then, enter a set of stars or one of the named constellation options. Currently, McGalaxy supports 146 named stars and two constellation. At any point, to see a list of all supported stars and constellations, input:
 
 ```
-"h"
+h
 ```
 
 or
 
 ```
-"help"
+help
 ```
 
 To exit the program, simply input:
 
 ```
-"x"
+x
 ```
 
 or
 
 ```
-"exit"
+exit
 ```
 
 Because of the number of McDonald's on the list (15,592), and because the program checks each n-length combination of these McDonald's (where n is the number of stars in the input constellation), it is prohibitive to run McGalaxy including the whole data set on most consumer hardware. As such, by default, McGalaxy only looks at McDonald's in Alaska. To broaden your search to all McDonald's in the USA and Canada simply add the flag
